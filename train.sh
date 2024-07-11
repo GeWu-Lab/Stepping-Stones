@@ -1,0 +1,1 @@
+python train.py --gpu_id 0 --bs 2 --epochs 30

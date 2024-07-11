@@ -1,0 +1,1 @@
+python test.py --ckpt_dir "log/best.ckpt" --gpu_id 0 --save_mask
