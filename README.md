@@ -24,9 +24,9 @@ Audio-Visual Segmentation (AVS) aims to achieve pixel-level localization of soun
 | AVSBench          | 78.74 | 87.9     | 54.00 | 64.5     | 29.77 | 35.2     | ECCV'2022 |
 | AVSC              | 80.57 | 88.19    | 58.22 | 65.10    | -     | -        | ACM MM'2023 |
 | CATR              | 81.40 | 89.60    | 59.00 | 70.00    | 32.80 | 38.50    | ACM MM'2023 |
-| DiffusionAVS      | 81.38 | 90.20    | 58.18 | 70.90    | -     | -        | Arxiv'2023 |
+| DiffusionAVS      | 81.38 | 90.20    | 58.18 | 70.90    | -     | -        | ArXiv'2023 |
 | ECMVAE            | 81.74 | 90.10    | 57.84 | 70.80    | -     | -        | CVPR'2023 |
-| AuTR              | 80.4  | 89.1     | 56.2  | 67.2     | -     | -        | Arxiv'2023 |
+| AuTR              | 80.4  | 89.1     | 56.2  | 67.2     | -     | -        | ArXiv'2023 |
 | SAMA-AVS          | 81.53 | 88.6     | 63.14 | 69.1     | -     | -        | WACV'2023 |
 | AQFormer          | 81.60 | 89.40    | 61.10 | 72.10    | -     | -        | IJCAI'2023 |
 | AVSegFormer       | 82.06 | 89.90    | 58.36 | 69.30    | 36.66 | 42.00    | AAAI'2024 |
