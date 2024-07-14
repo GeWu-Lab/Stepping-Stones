@@ -54,6 +54,7 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
    |--v2
    |--v1m
    |--v1s
+   |--metadata.csv
 ```
 
 ### Training
