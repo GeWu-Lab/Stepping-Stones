@@ -65,7 +65,7 @@ For stepping_stones for AVSS subtask, you should put the first stage results fro
 
 Then, you can simply modify config in [train_avss.sh](train_avss.sh) or run the code using:
 ~~~shell
-python train.py --avss --gpu_id 0 --bs 1 --epochs 30
+python train.py --task avss --gpu_id 0 --bs 1 --epochs 30
 ~~~
 
 ### Testing
