@@ -57,7 +57,7 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
    |--metadata.csv
 ```
 ### Pre-trained backbone
-We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](). Don't forget to modify the path in [config.py](config.py).
+We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](https://drive.google.com/file/d/15wI-2M3Cfovl6oNTvBSQfDYKf5FmqooD/view?usp=drive_link). Don't forget to modify the path in [config.py](config.py).
 ### Training
 For S4 and MS3 subtasks, you can simply modify config in [train_avs.sh](train_avs.sh) or run the code using:  
 ~~~shell
