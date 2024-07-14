@@ -28,6 +28,7 @@ parser.add_argument("--weight_dec", type=float, default=0.05, help='weight decay
 parser.add_argument("--epochs", type=int, default=30, help='epochs to fine tuning adapters.')
 parser.add_argument("--device", type=str, default="cuda:0", help="The device to run generation on.")
 parser.add_argument("--log_dir", type=str, default="./log", help="The path to save checkpoint and mask.")
+parser.add_argument("--task", type=str, default="avss", help="subtask")
 parser.add_argument("--mask_path", 
                     type=str,
                     default="/data/avs_mask_final/", 

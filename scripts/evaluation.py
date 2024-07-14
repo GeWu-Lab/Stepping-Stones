@@ -1,9 +1,9 @@
 import torch
 from utils import miou_fscore
 from scripts.save_mask import save_batch_raw_mask
+N_CLASSES = 71
 
 def test(model, test_loader,  args):
-    N_CLASSES = 71
     model.eval()
     miou_pc= torch.zeros((N_CLASSES))  # miou value per class (total sum)
     Fs_pc= torch.zeros((N_CLASSES))  # f-score per class (total sum)

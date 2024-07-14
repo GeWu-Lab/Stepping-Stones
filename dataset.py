@@ -5,7 +5,6 @@ from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 import cv2
 import os
-import cv2
 from transformers import Mask2FormerImageProcessor
 import json
 from PIL import Image
@@ -86,8 +85,13 @@ def custom_collate(batch):
         "mask_labels": mask_labels,
     }
     return res
-
 def get_train_dataloader(args):
+    if args.task=="avss":
+        return get_avss_train_dataloader(args)
+    else:
+        return get_avs_train_dataloader(args)
+
+def get_avss_train_dataloader(args):
     train_dataset_v1s = AVSBench(args,'train', "v1s")
     train_dataset_v1m = AVSBench(args,'train', "v1m")
     train_dataset_v2 = AVSBench(args,'train', "v2")
@@ -100,8 +104,17 @@ def get_train_dataloader(args):
 
     train_loader = chain(train_loader_v1s, train_loader_v1m, train_loader_v2)
     return train_loader
-
+def get_avs_train_dataloader(args):
+    train_dataset = AVSBench(args,'train', args.task)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.bs, shuffle=True, num_workers=args.num_workers,
+                                      pin_memory=True, collate_fn=custom_collate)
+    return train_loader
 def get_val_dataloader(args,split):
+    if args.task=="avss":
+        return get_avss_val_dataloader(args,split)
+    else:
+        return get_avs_val_dataloader(args,split)
+def get_avss_val_dataloader(args,split):
     val_dataset_v1s = AVSBench(args,split, "v1s")
     val_dataset_v1m = AVSBench(args,split, "v1m")
     val_dataset_v2 = AVSBench(args,split, "v2")
@@ -114,7 +127,11 @@ def get_val_dataloader(args,split):
 
     val_loader = chain(val_loader_v1s,val_loader_v1m, val_loader_v2)
     return val_loader
-
+def get_avs_val_dataloader(args,split):
+    train_dataset = AVSBench(args,split, args.task)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.bs, shuffle=True, num_workers=args.num_workers,
+                                      pin_memory=True, collate_fn=custom_collate)
+    return train_loader
 class AVSBench(Dataset):
     def __init__(self, args, split, ver):
         self.ver = ver

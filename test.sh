@@ -1,1 +1,1 @@
-python test.py --ckpt_dir "log/best.ckpt" --gpu_id 0 --save_mask
+python test.py --task avss --ckpt_dir "log/best.ckpt" --gpu_id 0 --save_mask

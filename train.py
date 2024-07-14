@@ -3,7 +3,7 @@ import time
 import torch
 from config import args
 import argparse
-from favss_final_test.dataset import get_train_dataloader,get_val_dataloader
+from .dataset import get_train_dataloader,get_val_dataloader
 from models import AdaptiveAVS_AVSS
 import copy
 from scripts import test
