@@ -56,7 +56,8 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
    |--v1s
    |--metadata.csv
 ```
-
+### Pre-trained checkpoint
+We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](). Don't forget to modify the path in [config.py](config.py).
 ### Training
 For S4 and MS3 subtasks, you can simply modify config in [train_avs.sh](train_avs.sh) or run the code using:  
 ~~~shell
@@ -74,7 +75,7 @@ After putting the first stage results in the right place, you can simply run the
 ~~~shell
 python test.py --task avss --ckpt_dir "log/best.ckpt" --gpu_id 0 --save_mask
 ~~~
-### Pre-trained checkpoints
+### Download checkpoints
 We also provides pre-trained models for all three subtasks. You can download them from the following links for quick evaluation.
 
 |Subset|mIoU|F-score|Download|
