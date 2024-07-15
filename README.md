@@ -92,6 +92,11 @@ We also provides pre-trained models for all three subtasks. You can download the
 ## Citation
 If you find this work useful, please consider citing it.
 
-<pre><code>
-
-</code></pre>
+~~~BibTeX
+@article{ma2024steppingstones,
+          title={Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation},
+          author={Ma, Juncheng and Sun, Peiwen and Wang  Yaoting and Hu, Di},
+          journal={IEEE European Conference on Computer Vision (ECCV)},
+          year={2024},
+         }
+~~~
