@@ -37,7 +37,7 @@ Audio-Visual Segmentation (AVS) aims to achieve pixel-level localization of soun
 | MUTR              | 81.5  | 89.8     | 65.0  | 73.0     | -     | -        | AAAI'2024 |
 |**AAVS(Ours)**        | **83.2** | **91.3** | **67.3** | **77.6** | **48.5\*** | **53.2\***   | ECCV'2024 |
 
->  $^∗$ indicates that the model uses the Stepping Stones strategy.
+>  ∗^∗ indicates that the model uses the Stepping Stones strategy.
 ### Quantitative comparision
 
 Single Sound Source Segmentation(S4): 
@@ -95,7 +95,7 @@ If you find this work useful, please consider citing it.
 ~~~BibTeX
 @article{ma2024steppingstones,
           title={Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation},
-          author={Ma, Juncheng and Sun, Peiwen and Wang  Yaoting and Hu, Di},
+          author={Ma, Juncheng and Sun, Peiwen and Wang, Yaoting and Hu, Di},
           journal={IEEE European Conference on Computer Vision (ECCV)},
           year={2024},
          }
