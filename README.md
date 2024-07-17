@@ -1,5 +1,5 @@
 # 💬Stepping-Stones
-Here is the official PyTorch implementation of ''*Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation*''. Please refer to our [ECCV 2024 paper](__) for more details.
+Here is the official PyTorch implementation of ''*Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation*''. Please refer to our [ECCV 2024 paper](https://arxiv.org/abs/2407.11820) for more details.
 
 **Paper Title: "Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation"**
 
@@ -9,9 +9,9 @@ Here is the official PyTorch implementation of ''*Stepping Stones: A Progressive
 
 🚀: Project page here: [Project Page](https://gewu-lab.github.io/stepping_stones/)
 
-📄: Paper here: [Paper]()
+📄: Paper here: [Paper](https://arxiv.org/abs/2407.11820)
 
-🔍: Supplementary material: [Supplementary]()
+🔍: Supplementary material: [Supplementary](https://gewu-lab.github.io/stepping_stones/static/pdfs/09290-supp.pdf)
 ## Overview
 Audio-Visual Segmentation (AVS) aims to achieve pixel-level localization of sound sources in videos, while Audio-Visual Semantic Segmentation (AVSS), as an extension of AVS, further pursues semantic understanding of audio-visual scenes. However, since the AVSS task requires the establishment of audio-visual correspondence and semantic understanding simultaneously, we observe that previous methods have struggled to handle this mashup of objectives in end-to-end training, resulting in insufficient learning and sub-optimization. Therefore, we propose a two-stage training strategy called Stepping Stones, which decomposes the AVSS task into two simple subtasks from localization to semantic understanding, which are fully optimized in each stage to achieve step-by-step global optimization. This training strategy has also proved its generalization and effectiveness on existing methods. To further improve the performance of AVS tasks, we propose a novel framework Adaptive Audio Visual Segmentation, in which we incorporate an adaptive audio query generator and integrate masked attention into the transformer decoder, facilitating the adaptive fusion of visual and audio features.  Extensive experiments demonstrate that our methods achieve state-of-the-art results on all three AVS benchmarks. 
 
