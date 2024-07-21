@@ -3,7 +3,7 @@ Here is the official PyTorch implementation of ''*Stepping Stones: A Progressive
 
 **Paper Title: "Stepping Stones: A Progressive Training Strategy for Audio-Visual Semantic Segmentation"**
 
-**Authors: [Juncheng Ma](https://github.com/ucasmjc), Peiwen Sun, Yaoting Wang and [Di Hu](https://dtaoo.github.io/index.html)**
+**Authors: [Juncheng Ma](https://ucasmjc.github.io/), Peiwen Sun, Yaoting Wang and [Di Hu](https://dtaoo.github.io/index.html)**
 
 **Accepted by: European Conference on Computer Vision(ECCV 2024)**
 
@@ -61,6 +61,7 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
    |--v1s
    |--metadata.csv
 ```
+For feature extraction, you can refer to [GAVS](https://github.com/GeWu-Lab/Generalizable-Audio-Visual-Segmentation), or we will rebuild our codes and update the code instruction in the future (no later than 2024 August).
 ### Pre-trained backbone
 We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](https://drive.google.com/file/d/15wI-2M3Cfovl6oNTvBSQfDYKf5FmqooD/view?usp=drive_link). Don't forget to modify the path in [config.py](config.py).
 ### Training
