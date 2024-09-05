@@ -1,0 +1,1 @@
+python test.py --task v1s --ckpt_dir "check/v1s.pth"
