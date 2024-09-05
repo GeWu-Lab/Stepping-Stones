@@ -61,7 +61,8 @@ if __name__ == '__main__':
     # Optimizer
     params=set_params(model)
     optimizer = torch.optim.AdamW(params,lr=args.lr, weight_decay=args.weight_dec, eps=1e-8, betas=(0.9, 0.999))
-
+    #loss
+    criterion = torch.nn.CrossEntropyLoss()
     train_losses = []
     miou, f_score = [], []
     max_miou=0
@@ -73,7 +74,7 @@ if __name__ == '__main__':
         model.train()
         losses = []
         for batch_idx, batch_data in enumerate(train_loader_epoch):
-            loss_vid, _= model(batch_data)
+            pred= model(batch_data)
             loss_vid = torch.mean(torch.stack(loss_vid))
             optimizer.zero_grad()
             loss_vid.backward()
