@@ -72,7 +72,7 @@ For S4 and MS3 subtasks, you can simply modify config in [train_avs.sh](train_av
 cd avs
 sh train_avs.sh
 ~~~
-For stepping_stones for AVSS subtask, you should put the first stage results from trained AVSS model in a folder at first, and modify the ''mask_path'' in [config.py](config.py). Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1o3k-E4mLf7V9AWoLzJDVAG81gpCdcZXu/view?usp=drive_link) (will be open soon).
+For stepping_stones for AVSS subtask, you should put the first stage results from trained AVSS model in a folder at first, and modify the ''mask_path'' in [config.py](config.py). Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1zb3z15rapvl5L5ONd3vU6UEc7O8C3YoU/view?usp=drive_link).
 
 Then, you can simply modify config in [train_avss.sh](train_avss.sh) or run the code using:
 ~~~shell
