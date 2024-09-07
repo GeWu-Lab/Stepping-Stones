@@ -74,7 +74,7 @@ if __name__ == '__main__':
     
     # Data
     train_loader=get_avss_train_dataloader(args)
-    val_loader = get_avss_val_dataloader(args,"test")
+    val_loader = get_avss_val_dataloader(args,"val")
     # Model
     model = AdaptiveAVS(args).cuda()
     # Optimizer
