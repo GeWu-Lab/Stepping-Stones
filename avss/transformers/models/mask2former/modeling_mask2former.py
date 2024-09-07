@@ -1873,13 +1873,12 @@ class Mask2FormerMaskedAttentionDecoder(nn.Module):
         predicted_mask, attention_mask = self.mask_predictor(
             intermediate_hidden_states, pixel_embeddings, feature_size_list[0]
         )
-        if audio_boost_mask is not None:
-            audio_boost_mask = nn.functional.interpolate(
-                audio_boost_mask.unsqueeze(1), size=feature_size_list[0], mode="bilinear"
-            ).unsqueeze(1).repeat(1, self.num_heads, inputs_embeds.shape[0], 1, 1).flatten(0, 1).flatten(
-                2)  # (b*nh)*q*hw
-            attention_mask[torch.where(audio_boost_mask <0.5)] = True
-            attention_mask[torch.where(audio_boost_mask >=0.5)] = False
+        audio_boost_mask = nn.functional.interpolate(
+            audio_boost_mask.unsqueeze(1), size=feature_size_list[0], mode="bilinear"
+        ).unsqueeze(1).repeat(1, self.num_heads, inputs_embeds.shape[0], 1, 1).flatten(0, 1).flatten(
+            2)  # (b*nh)*q*hw
+        attention_mask[torch.where(audio_boost_mask <0.5)] = True
+        attention_mask[torch.where(audio_boost_mask >=0.5)] = False
         intermediate_mask_predictions += (predicted_mask,)
 
         for idx, decoder_layer in enumerate(self.layers):
@@ -2096,26 +2095,22 @@ class Mask2FormerTransformerModule(nn.Module):
 
         for i in range(self.num_feature_levels):
             size_list.append(multi_scale_features[i].shape[-2:])
-            if audio_boost_mask is not None:
-                low=0.4
-                high=0.6
-                audio_prompt=nn.functional.interpolate(
-                    audio_boost_mask.unsqueeze(1), size=size_list[-1], mode="bilinear"
-                ).flatten(2).squeeze(1)  # b*1*hw
-                silence_embed=self.silence_embed.weight
-                audio_embed=self.audio_embed.weight
-                uncertain_embed=self.uncertain_embed.weight
-                position_embed=self.position_embedder(multi_scale_features[i], None).flatten(2).permute(0,2,1)
-                
-                position_embed[audio_prompt<=low]+=silence_embed
-                position_embed[audio_prompt>=high]+=audio_embed
-                temp=audio_prompt>low
-                temp[audio_prompt>=high]=False
-                position_embed[temp]+=uncertain_embed
-                multi_stage_positional_embeddings.append(position_embed.permute(1,0,2))
-            else:
-                multi_stage_positional_embeddings.append(self.position_embedder(multi_scale_features[i], None).flatten(2))
-                multi_stage_positional_embeddings[-1] = multi_stage_positional_embeddings[-1].permute(2, 0, 1)
+            low=0.4
+            high=0.6
+            audio_prompt=nn.functional.interpolate(
+                audio_boost_mask.unsqueeze(1), size=size_list[-1], mode="bilinear"
+            ).flatten(2).squeeze(1)  # b*1*hw
+            silence_embed=self.silence_embed.weight
+            audio_embed=self.audio_embed.weight
+            uncertain_embed=self.uncertain_embed.weight
+            position_embed=self.position_embedder(multi_scale_features[i], None).flatten(2).permute(0,2,1)
+            
+            position_embed[audio_prompt<=low]+=silence_embed
+            position_embed[audio_prompt>=high]+=audio_embed
+            temp=audio_prompt>low
+            temp[audio_prompt>=high]=False
+            position_embed[temp]+=uncertain_embed
+            multi_stage_positional_embeddings.append(position_embed.permute(1,0,2))
             multi_stage_features.append(
                 self.input_projections[i](multi_scale_features[i]).flatten(2)
                 + self.level_embed.weight[i][None, :, None]
@@ -2335,16 +2330,13 @@ class Mask2FormerModel(Mask2FormerPreTrainedModel):
         pixel_level_module_output = self.pixel_level_module(
             pixel_values=pixel_values, output_hidden_states=output_hidden_states
         )
-        if audio_boost_mask is not None:
-            mask_features = pixel_level_module_output.decoder_last_hidden_state + torch.nn.functional.interpolate(
-                audio_boost_mask.unsqueeze(1), size=pixel_level_module_output.decoder_last_hidden_state.shape[-2:],
-                mode="bilinear")
-        else:
-            mask_features = pixel_level_module_output.decoder_last_hidden_state
-        # 有编码器的最后一层特征图，解码器的最后一层特征图（B*256*96*96），�?output_hidden_states为True，还会返回编码器和解码器的�?�尺度特征图，前两项其实就是后两项的[-1]
+
+        mask_features = pixel_level_module_output.decoder_last_hidden_state + torch.nn.functional.interpolate(
+            audio_boost_mask.unsqueeze(1), size=pixel_level_module_output.decoder_last_hidden_state.shape[-2:],
+            mode="bilinear")
         transformer_module_output = self.transformer_module(
             prompt_features_projected=prompt_features_projected,
-            multi_scale_features=pixel_level_module_output.decoder_hidden_states,  # 解码器的多尺度特征图
+            multi_scale_features=pixel_level_module_output.decoder_hidden_states, 
             mask_features=mask_features,
             output_hidden_states=True,
             output_attentions=output_attentions,
