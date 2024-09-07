@@ -65,44 +65,54 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
 ### Pre-trained backbone
 We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](https://drive.google.com/file/d/15wI-2M3Cfovl6oNTvBSQfDYKf5FmqooD/view?usp=drive_link). Don't forget to modify the path in [config.py](config.py). 
 
-In addition, we changed some metadata of the backbone, and you should replace the config.json and preprocessor_config.json in ".models" by ones provided by us.
-### Training
-For S4 and MS3 subtasks, you can simply modify config in [train_avs.sh](train_avs.sh) or run the code using:  
-~~~shell
-cd avs
-sh train_avs.sh
-~~~
-For stepping_stones for AVSS subtask, you should put the first stage results from trained AVSS model in a folder at first, and modify the ''mask_path'' in [config.py](config.py). Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1o3k-E4mLf7V9AWoLzJDVAG81gpCdcZXu/view?usp=drive_link) (will be open soon).
+In addition, we changed some metadata of the backbone, and you should replace the config.json and preprocessor_config.json in ".models" folder by ones provided by us (for avs and avss subtasks respectively).
 
-Then, you can simply modify config in [train_avss.sh](train_avss.sh) or run the code using:
-~~~shell
-python train.py --task avss --gpu_id 0 --bs 1 --epochs 30
-~~~
-
-### Testing
-For S4 and MS3 subtasks, you can simply run the following code to test.
-~~~shell
-cd avs
-sh test.sh
-~~~
-For AVSS subtask, we will update soon.
 ### Download checkpoints
-We also provides pre-trained models for all three subtasks. You can download them from the following links for quick evaluation.
+We provides checkpoints for all three subtasks. You can download them from the following links for quick evaluation.
 
 |Subset|mIoU|F-score|Download|
 |:---:|:---:|:---:|:---:|
 |S4|83.18|91.33|[ckpt](https://drive.google.com/file/d/1Y8GvGjdwixBcDuv2-JY3aXTnNPQ5Zs3l/view?usp=drive_link)|
 |MS3|67.30|77.63|[ckpt](https://drive.google.com/file/d/1rV_7ZDS0OtWQ5aLZulrXJjPjgz5gIuS2/view?usp=drive_link)|
-|AVSS|48.50|53.20|[ckpt](https://drive.google.com/file/d/1o18EobKKkmCC_RCGO8-I4oDKoL0eDy4-/view?usp=drive_link)|
+|AVSS|48.50|53.20|[ckpt](https://drive.google.com/file/d/1j0bmGJaacWxSlg1kR86E9Rf9IoA0HBhA/view?usp=drive_link)|
 
-For quick evaluation, you should download the pre-trained backbone at first and replace the config.json and preprocessor_config.json in ".models" folder. Then, download the checkpoint and run
+### Testing
+At first, you should modify paths in config.py.
 
-~~~
+For S4 and MS3 subtasks, you can run the following code to test.
+~~~shell
 cd avs
 sh test.sh
 ~~~
+For AVSS subtask, you should put predicted masks without semantic from trained AVSS model in the following format firstly, and modify the ''mask_path'' in config.py. Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1zb3z15rapvl5L5ONd3vU6UEc7O8C3YoU/view?usp=drive_link).
 
-For AVSS, we will rebuild the codes and update in the future.
+```
+|--masks
+   |--v2
+      |--_aldtLqTVYI_1000_11000
+         |--0.png
+         |--...
+   |--v1m
+   |--v1s
+```
+Then, you can run the following code to test.
+~~~shell
+cd avss
+sh test.sh
+~~~
+### Training
+For S4 and MS3 subtasks, you can run the following code to train:  
+> Remember to modify the config.
+~~~shell
+cd avs
+sh train_avs.sh
+~~~
+For stepping_stones for AVSS subtask, you can run the following code to train:
+> Remember to put predicted masks without semantic in the right way and modify the config.
+~~~shell
+cd avss
+sh train_avss.sh
+~~~
 ## Citation
 If you find this work useful, please consider citing it.
 

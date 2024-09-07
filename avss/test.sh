@@ -1,0 +1,1 @@
+python test.py --ckpt_dir "test.pth"
