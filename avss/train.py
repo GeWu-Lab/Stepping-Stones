@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
     for idx_ep in range(args.epochs):
         print(f'[Epoch] {idx_ep}')
-        if idx_ep==int(args.epochs//2):
+        if idx_ep==int(args.epochs//3):
             model=get_fineture_model(args,log_dir)
             params=set_params(model, True)
             optimizer = torch.optim.AdamW(params,lr=1e-4, weight_decay=args.weight_dec, eps=1e-8, betas=(0.9, 0.999))
