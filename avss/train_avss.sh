@@ -1,1 +1,1 @@
-python train.py --epochs 30
+python train.py

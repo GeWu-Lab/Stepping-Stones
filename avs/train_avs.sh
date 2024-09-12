@@ -1,1 +1,1 @@
-python train.py --task v1s --bs 1 --epochs 30
+python train.py --task v1s
