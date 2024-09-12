@@ -84,7 +84,7 @@ For S4 and MS3 subtasks, you can run the following code to test.
 cd avs
 sh test.sh
 ~~~
-For AVSS subtask, you should put predicted masks without semantic from trained AVSS model in the following format firstly, and modify the ''mask_path'' in config.py. Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1zb3z15rapvl5L5ONd3vU6UEc7O8C3YoU/view?usp=drive_link).
+For AVSS subtask, you should put predicted masks without semantic from trained AVSS model in the following format firstly, and modify the ''mask_path'' in config.py. Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1Y0oSJMdudWfYvTuR4z3nhUrBni57uqXt/view?usp=drive_link).
 
 ```
 |--masks
