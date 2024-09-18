@@ -63,7 +63,7 @@ Please refer to the link [AVSBenchmark](https://github.com/OpenNLPLab/AVSBench) 
 ```
 
 ### Pre-trained backbone
-We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](https://drive.google.com/file/d/15wI-2M3Cfovl6oNTvBSQfDYKf5FmqooD/view?usp=drive_link). Don't forget to modify the path in [config.py](config.py). 
+We use Mask2Former model with Swin-B pre-trained on ADE20k as backbone, which could be downloaded in this [link](https://drive.google.com/file/d/15wI-2M3Cfovl6oNTvBSQfDYKf5FmqooD/view?usp=drive_link). Don't forget to modify the path in config.py. 
 
 In addition, we changed some metadata of the backbone, and you should replace the config.json and preprocessor_config.json in ".models" folder by ones provided by us (for avs and avss subtasks respectively).
 
@@ -84,7 +84,7 @@ For S4 and MS3 subtasks, you can run the following code to test.
 cd avs
 sh test.sh
 ~~~
-For AVSS subtask, you should put predicted masks without semantic from trained AVSS model in the following format firstly, and modify the ''mask_path'' in config.py. Or you can download results used in our paper in this [link](https://drive.google.com/file/d/1Y0oSJMdudWfYvTuR4z3nhUrBni57uqXt/view?usp=drive_link).
+For AVSS subtask, you should put predicted masks without semantic from trained AVSS model in the following format firstly, and modify the ''mask_path'' in config.py. Or you can download results used by us in this [link](https://drive.google.com/file/d/1sHvltXub5Ql_ZsVelE1Zt9TpLeb4i3hq/view?usp=drive_link).
 
 ```
 |--masks
